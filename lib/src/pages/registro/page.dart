@@ -17,16 +17,16 @@ import 'package:http/http.dart' as http;
 import 'package:teta_cms/teta_cms.dart';
 import 'package:myapp/globals.dart' as globals;
 
-class Pagelogin extends StatefulWidget {
-  const Pagelogin({
+class PageRegistro extends StatefulWidget {
+  const PageRegistro({
     Key? key,
   }) : super(key: key);
 
   @override
-  _StateLogin createState() => _StateLogin();
+  _StateRegistro createState() => _StateRegistro();
 }
 
-class _StateLogin extends AuthState<Pagelogin>
+class _StateRegistro extends AuthState<PageRegistro>
     with SingleTickerProviderStateMixin {
   String email = '0';
 
@@ -95,6 +95,7 @@ class _StateLogin extends AuthState<Pagelogin>
                   ),
                   child: Image.network(
                     r'''https://vlpqmnlctxuuxvjhamhx.supabase.co/storage/v1/object/public/public/Entrega1/assets/logo_small.png''',
+                    width: double.maxFinite,
                     fit: BoxFit.fitWidth,
                   ),
                 ),
@@ -284,8 +285,8 @@ class _StateLogin extends AuthState<Pagelogin>
                           status = 'Loading';
                         });
                         final response = await Supabase.instance.client.auth
-                            .signIn(email: email, password: password);
-                        if (response.error != null || response.user == null) {
+                            .signUp(email, password);
+                        if (response.error != null) {
                           setState(() {
                             status = 'Failed';
                           });
@@ -318,7 +319,7 @@ class _StateLogin extends AuthState<Pagelogin>
                         border: null,
                       ),
                       child: Text(
-                        'Ingresa',
+                        'Registrate',
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: const Color(0xFFFFFFFF),
@@ -335,46 +336,13 @@ class _StateLogin extends AuthState<Pagelogin>
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.zero,
-                  padding: const EdgeInsets.only(
-                    left: 100,
-                    right: 100,
-                  ),
-                  width: double.maxFinite,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFFFFFFF),
-                    border: Border(
-                      left: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                      top: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                      right: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                      bottom: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                    ),
-                  ),
-                  child: Divider(
-                    height: 15,
-                    color: Color(0xFF000000),
-                  ),
-                ),
-                Container(
                   margin: const EdgeInsets.only(
                     top: 15,
                   ),
                   padding: EdgeInsets.zero,
                   width: double.maxFinite,
                   decoration: const BoxDecoration(
-                    color: Color(0xFFFFFFFF),
+                    color: Color(0xFFFEFEFE),
                     border: Border(
                       left: BorderSide(
                           width: 0,
@@ -397,7 +365,7 @@ class _StateLogin extends AuthState<Pagelogin>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(r'''Aun no tienes cuenta?''',
+                      Text(r'''ya tienes cuenta?''',
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               color: const Color(0xFF000000),
@@ -411,77 +379,12 @@ class _StateLogin extends AuthState<Pagelogin>
                           textDirection: TextDirection.ltr,
                           maxLines: 1),
                       TextButton(
-                        onPressed: () async {
-                          await Navigator.push<void>(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PageRegistro(),
-                            ),
-                          );
-                        },
+                        onPressed: () async {},
                         onLongPress: () async {},
-                        child: Text(r'''Registrate ahora''',
+                        child: Text(r'''Ingresa''',
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 color: const Color(0xFFFF0000),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                fontStyle: FontStyle.normal,
-                                decoration: TextDecoration.none,
-                              ),
-                            ),
-                            textAlign: TextAlign.left,
-                            textDirection: TextDirection.ltr,
-                            maxLines: 1),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.zero,
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                  ),
-                  width: double.maxFinite,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFFFFFFF),
-                    border: Border(
-                      left: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                      top: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                      right: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                      bottom: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: Color(0xFF000000)),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () async {
-                          await Navigator.push<void>(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PageReset_Password(),
-                            ),
-                          );
-                        },
-                        onLongPress: () async {},
-                        child: Text(r'''¿Olvidaste tu contraseña?''',
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: const Color(0xFF000000),
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
                                 fontStyle: FontStyle.normal,

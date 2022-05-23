@@ -1,1 +1,10 @@
-        export "./login/page.dart";        export "./homepage/page.dart";        export "./register/page.dart";        export "./editprofile/page.dart";
+export "./home/page.dart";
+export "./menu/page.dart";
+export "./reset_password/page.dart";
+export "./login/page.dart";
+export "./list_products/page.dart";
+export "./reserve/page.dart";
+export "./registro/page.dart";
+export "./list_store/page.dart";
+export "./view_product/page.dart";
+export "./my_order/page.dart";

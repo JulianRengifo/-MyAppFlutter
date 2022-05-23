@@ -1,40 +1,48 @@
   name: myapp
   description: A new Flutter project.
-  publish_to: 'none' # Remove this line if you wish to publish to pub.dev
   version: 1.0.0+1
   environment:
     sdk: ">=2.12.0 <3.0.0"
   dependencies:
     flutter:
       sdk: flutter
-    cupertino_icons: ^1.0.2
-    auth_buttons: ^1.0.1+4
+
+    teta_cms:
+      git: 
+        url: https://github.com/teta-so/cms.git
+        path: teta_cms
+        ref: main
+    
+    cupertino_icons:
+    auth_buttons:
     supabase_flutter:
     supabase:
     lottie:
-    material_design_icons_flutter: ^4.0.5955
-    youtube_player_iframe: ^2.2.2
+    material_design_icons_flutter:
+    youtube_player_iframe: 
     google_fonts:
-    url_launcher: ^6.0.12
-    map: ^1.0.0
-    latlng: ^0.1.0
-    badges: ^2.0.1
-    liquid_swipe: ^2.1.1
+    url_launcher: 
+    map:
+    latlng:
+    badges:
+    liquid_swipe:
     camera:
-    paged_vertical_calendar: ^1.0.4
-    tcard: ^1.3.5
-    intl: ^0.17.0
-    just_audio: ^0.9.20
-    location: ^4.3.0
-    concentric_transition: ^1.0.1+1
-    bouncing_widget: ^2.0.0
-    clipboard: ^0.1.3
-    webviewx: ^0.2.1
-    custom_refresh_indicator: ^1.0.0
-    splash_screen_view: ^3.0.0
-    purchases_flutter: ^3.0.0 
-    flutter_stripe: ^2.3.0
+    paged_vertical_calendar:
+    tcard:
+    intl:
+    just_audio:
+    location: 
+    concentric_transition: 
+    bouncing_widget: 
+    clipboard: 
+    webviewx: 
+    http:
+    custom_refresh_indicator: 
+    splash_screen_view: 
+    purchases_flutter: 
+    flutter_stripe: 
     
+
   dev_dependencies:
     flutter_test:
       sdk: flutter
