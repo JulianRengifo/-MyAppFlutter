@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'package:myapp/src/pages/home/page.dart';
-import 'package:teta_cms/teta_cms.dart';
+import 'package:cosifi/src/Views/home.dart';
 import 'globals.dart' as globals;
 
 ///NOTE:
@@ -14,13 +13,6 @@ void main() async {
   // Inicilizo variables a usar en la mayoria de mis pantallas
   globals.email = "melo";
   globals.idRestaurant = "1";
-
-  WidgetsFlutterBinding.ensureInitialized();
-  TetaCMS.initialize(
-    token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpiYXJyZXJhMDk0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcm9qZWN0cyI6WzEwNjY2OV0sIm5hbWUiOiJKZWlzc29uIEhhcnZleSBCYXJyZXJhIFNhbmNoZXoiLCJlbWl0dGVyIjoiVGV0YS1BdXRoIiwiaWF0IjoxNjUyODM5OTA3LCJleHAiOjQ4MDg1OTk5MDd9.BXjs-rHVRInH0ye5AXnP7BI47NKv68zr_NQGiKj7Pcs',
-    prjId: 106669,
-  );
 
   Supabase.initialize(
     url: 'https://vljgeizgbbophoeqhyox.supabase.co',
