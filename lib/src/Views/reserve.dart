@@ -449,6 +449,7 @@ class _StateReserve extends AuthState<PageReserve>
                                       '''id_user''': '''${email}''',
                                       '''date''': '''${date}''',
                                       '''reserved''': "false",
+                                      '''time''': '''${time}''',
                                     },
                                     returning: ReturningOption.minimal,
                                   ).execute();

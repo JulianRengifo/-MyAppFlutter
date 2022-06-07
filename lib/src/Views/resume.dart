@@ -153,7 +153,7 @@ class _StateResume extends AuthState<PageResume>
                   ],
                 ),
                 Text(
-                    r'''Gracias por usar nuestros servicios, a continuaciòn le mostraremos un resumen de su pedido, para que lo tenga en cuenta al momento de reclamar su reserva.''',
+                    r'''Gracias por usar nuestro servicios, RECUERDA que puedes garantizar tu reserva haciendo el pago al siguiente número de Nequi o Daviplata 322 226 0739''',
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         color: const Color(0xFF000000),
@@ -199,6 +199,7 @@ class _StateResume extends AuthState<PageResume>
                           .select('id, name, activated')
                           .eq('id_user', email)
                           .eq('activated', false)
+                          .eq('confirmed', false)
                           .execute(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
@@ -368,12 +369,26 @@ class _StateResume extends AuthState<PageResume>
                 ),
                 child: GestureDetector(
                   onTap: () async {
-                    await Navigator.push<void>(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PageListStore(),
-                      ),
-                    );
+                    this
+                        .datasets['Supabase future builder']
+                        .forEach((dynamic product) async {
+                      final response = await Supabase.instance.client
+                          .from('orders')
+                          .update({"confirmed": true})
+                          .eq("id", product['id'].toString())
+                          .execute();
+                      if (response != null) {
+                        print("Orden Actualizada");
+                        await Navigator.push<void>(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PageListStore(),
+                          ),
+                        );
+                      } else {
+                        print("No se pudo actualizar la orden");
+                      }
+                    });
                   },
                   onLongPress: () async {},
                   child: Container(
